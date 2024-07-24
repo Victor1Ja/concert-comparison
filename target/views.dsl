@@ -13,14 +13,56 @@ systemcontext ticketingWebsite "SystemContext" {
     }
 }
 
-container ticketingWebsite "Cosmic Master Ticket" {
+container ticketingWebsite "Containers" {
+    include *
     animation {
-        ticketingWebsite
+        ticketingWebsite.spa
+        ticketingWebsite.web
+        ticketingWebsite.webSocketServer
+        ticketingWebsite.database
         user
         businessOwner
         paymentService
     }
     autoLayout
+    description "The container diagram for the Internet Banking System."
+}
+
+component ticketingWebsite.web "Components" {
+    include *
+    animation {
+        // ticketingWebsite.spa
+        // ticketingWebsite.web
+        // ticketingWebsite.webSocketServer
+        // ticketingWebsite.database
+        ticketingWebsite.web.securityComponent
+    }
+    autoLayout
+    description "The component diagram for the API Application."
+}
+
+deployment ticketingWebsite "Development" "DevelopmentDeployment" {
+    include *
+    animation {
+        devEnv.devLaptop.devBrowser.developerSinglePageApplicationInstance
+        devEnv.devLaptop.devDocker.devNginx.developerWebApplicationInstance devEnv.devLaptop.devDocker.devNginx.developerWebSocketApplicationInstance
+        devEnv.devLaptop.devDbDocker.devDbServer.developerDatabaseInstance
+    }
+    autoLayout
+    description "An example development deployment scenario for the Internet Banking System."
+}
+
+deployment ticketingWebsite "Live" "LiveDeployment" {
+    include *
+    animation {
+        liveEnv.liveUserComputer.liveWebBrowser.liveSinglePageApplicationInstance
+        liveEnv.liveDc.liveWebNode.liveWebServer.liveWebApplicationInstance
+        liveEnv.liveDc.liveWebSocketNode.liveWebServer.liveWebSocketApplicationInstance
+        liveEnv.liveDc.liveDbNode.primaryDatabaseServer.livePrimaryDatabaseInstance
+        liveEnv.liveDc.liveFailover.secondaryDatabaseServer.liveSecondaryDatabaseInstance
+    }
+    autoLayout
+    description "An example live deployment scenario for the Internet Banking System."
 }
 
 dynamic ticketingWebsite "ViewSeatsState" "Seats state are:\n- Available\n- Soft locked\n- Locked" {

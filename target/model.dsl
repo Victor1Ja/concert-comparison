@@ -3,11 +3,17 @@ ticketingWebsite = softwaresystem "Cosmic Master Ticket" {
     !adrs concert-comparison/adrs
 
     spa = container "Single Page Application" "React"
-    web = container "Web Server" "Node.js"
+    database = container "Database" "PostgreSQL" "" "Database"
+
+    web = container "Web Server" "A server that serves the SPA and provides an API for the SPA to interact with the database." "Python and FastAPI" {
+        securityComponent = component "Security Component" "Provides functionality related to signing in, changing passwords, etc." "FastAPI Dependency"
+        securityComponent -> database "Reads from and writes to" "SQL/TCP"
+    }
+    
     webSocketServer = container "Web Socket Server" "Node.js" {
         description "A server that allows users to see the availability of seats in real time. Sends updates to the SPA when a seat is taken and when a seat is released."
     }
-    database = container "Database" "PostgreSQL" "" "Database"
+
     spa -> web "HTTP"
     web -> database 
     web -> webSocketServer
