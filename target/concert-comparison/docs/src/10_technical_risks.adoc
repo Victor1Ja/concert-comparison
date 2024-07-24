@@ -1,0 +1,22 @@
+ifndef::imagesdir[:imagesdir: ../images]
+
+[[section-technical-risks]]
+== Risks and Technical Debts
+
+=== High Traffic Overload
+
+- **Description**: During the release of tickets for highly anticipated concerts, the system may experience a sudden surge in user traffic. If the system is not designed to handle such peak loads, it could become unresponsive or crash, leading to a poor user experience and loss of sales.
+
+- **Mitigation**: Implement a scalable cloud infrastructure, and thorough performance testing to ensure the system can handle high volumes of traffic.
+
+=== Double-Selling of Seats:
+
+- **Description**: When multiple users attempt to purchase the same seat simultaneously, there is a risk that the system might allocate the same seat to more than one user. This can lead to customer dissatisfaction and logistical issues during the event.
+
+- **Mitigation**: Implement a WebSockets-based real-time seat locking mechanism to prevent double-selling of seats.
+
+=== Payment Processing Failures:
+
+- **Description**: Errors or delays in payment processing can result in failed transactions or duplicate charges. This can frustrate users and lead to a loss of revenue as well as potential disputes and chargebacks.
+
+- **Mitigation**: Ensure integration with reliable payment gateways and implement thorough error handling and transaction verification processes.
