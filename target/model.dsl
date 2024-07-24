@@ -8,6 +8,9 @@ ticketingWebsite = softwaresystem "Cosmic Master Ticket" {
     web = container "Web Server" "A server that serves the SPA and provides an API for the SPA to interact with the database." "Python and FastAPI" {
         securityComponent = component "Security Component" "Provides functionality related to signing in, changing passwords, etc." "FastAPI Dependency"
         securityComponent -> database "Reads from and writes to" "SQL/TCP"
+
+        signinController = component "Sign In Controller" "Allows users to sign in to the Cosmic Master Ticket." "FastAPI Controller"
+        signinController -> securityComponent "Uses"
     }
     
     webSocketServer = container "Web Socket Server" "Node.js" {

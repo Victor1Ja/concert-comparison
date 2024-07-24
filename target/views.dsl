@@ -49,7 +49,7 @@ deployment ticketingWebsite "Development" "DevelopmentDeployment" {
         devEnv.devLaptop.devDbDocker.devDbServer.developerDatabaseInstance
     }
     autoLayout
-    description "An example development deployment scenario for the Internet Banking System."
+    description "An example development deployment scenario for the Cosmic Master Ticket system."
 }
 
 deployment ticketingWebsite "Live" "LiveDeployment" {
@@ -62,7 +62,7 @@ deployment ticketingWebsite "Live" "LiveDeployment" {
         liveEnv.liveDc.liveFailover.secondaryDatabaseServer.liveSecondaryDatabaseInstance
     }
     autoLayout
-    description "An example live deployment scenario for the Internet Banking System."
+    description "An example live deployment scenario for the Cosmic Master Ticket system."
 }
 
 dynamic ticketingWebsite "ViewSeatsState" "Seats state are:\n- Available\n- Soft locked\n- Locked" {
