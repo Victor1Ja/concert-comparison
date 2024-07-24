@@ -65,11 +65,11 @@ deployment ticketingWebsite "Live" "LiveDeployment" {
     description "An example live deployment scenario for the Cosmic Master Ticket system."
 }
 
-dynamic ticketingWebsite "ViewSeatsState" "Seats state are:\n- Available\n- Soft locked\n- Locked" {
+dynamic ticketingWebsite.web "ViewSeatsState" "Seats state are:\n- Available\n- Soft locked\n- Locked" {
     user -> ticketingWebsite.spa "View available seats"
-    ticketingWebsite.spa -> ticketingWebsite.web "HTTP request for available seats"
-    ticketingWebsite.web -> ticketingWebsite.database "Request available seats (Not bought seats)"
-    ticketingWebsite.database -> ticketingWebsite.web "Send available seats"
+    ticketingWebsite.spa -> ticketingWebsite.web.seatsController "HTTP request for available seats"
+    ticketingWebsite.web.seatsController -> ticketingWebsite.database "Request available seats (Not bought seats)"
+    ticketingWebsite.database -> ticketingWebsite.web.seatsController "Send available seats"
     ticketingWebsite.spa -> ticketingWebsite.webSocketServer "Open web socket connection"
     ticketingWebsite.spa -> ticketingWebsite.webSocketServer "Request soft locked seats and locked (for payment) seats"
     ticketingWebsite.webSocketServer -> ticketingWebsite.spa "Send available seats"
@@ -78,18 +78,18 @@ dynamic ticketingWebsite "ViewSeatsState" "Seats state are:\n- Available\n- Soft
     autoLayout
 }
 
-dynamic ticketingWebsite "SelectSeats" "" {
+dynamic ticketingWebsite.web "SelectSeats" "Allow user to select seats" {
     user -> ticketingWebsite.spa "Select the seat(s)"
-    ticketingWebsite.spa -> ticketingWebsite.webSocketServer "Open WebSocket connection"
-    ticketingWebsite.spa -> ticketingWebsite.web "Request to select seats"
-    ticketingWebsite.web -> ticketingWebsite.webSocketServer "Send selected seats"
+    ticketingWebsite.spa -> ticketingWebsite.web.seatsController "Request to select seats"
+    ticketingWebsite.web.seatsController -> ticketingWebsite.webSocketServer "Open WebSocket connection"
+    ticketingWebsite.web.seatsController -> ticketingWebsite.webSocketServer "Send selected seats"
     // ticketingWebsite.webSocketServer -> ticketingWebsite.spa "Notify other users about seat selection"
     // ticketingWebsite.spa -> user "Confirm seat soft lock"
 
     autoLayout
 }
 
-dynamic ticketingWebsite "PayTicket" "" {
+dynamic ticketingWebsite.web "PayTicket" "User pays for the ticket" {
     user -> ticketingWebsite.spa "Go to payment step"
     ticketingWebsite.spa -> ticketingWebsite.webSocketServer "Hard lock selected seats"
     ticketingWebsite.webSocketServer -> ticketingWebsite.spa "Notify all users with those selected seats"
@@ -97,11 +97,11 @@ dynamic ticketingWebsite "PayTicket" "" {
     ticketingWebsite.spa -> user "Redirect to payment gateway for payment"
 
     user -> paymentService "Pay for the ticket"    
-    paymentService -> ticketingWebsite.web "Payment confirmation"
-    ticketingWebsite.web -> ticketingWebsite.database "Create purchase record"
-    ticketingWebsite.web -> ticketingWebsite.webSocketServer "Send payment confirmation to unlock seats"
+    paymentService -> ticketingWebsite.web.paymentController "Payment confirmation"
+    ticketingWebsite.web.paymentController -> ticketingWebsite.database "Create purchase record"
+    ticketingWebsite.web.paymentController -> ticketingWebsite.webSocketServer "Send payment confirmation to unlock seats"
 
-    ticketingWebsite.web -> ticketingWebsite.spa "Success payment response"
+    ticketingWebsite.web.paymentController -> ticketingWebsite.spa "Success payment response"
     ticketingWebsite.spa -> user "Notify user with success payment"
 
     autoLayout
