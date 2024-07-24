@@ -1,3 +1,28 @@
+systemcontext ticketingWebsite "SystemContext" {
+    include *
+    animation {
+        ticketingWebsite
+        user
+        businessOwner
+        paymentService
+    }
+    autoLayout
+    description "The system context diagram for the Cosmic Master Ticket system."
+    properties {
+        structurizr.groups false
+    }
+}
+
+container ticketingWebsite "Cosmic Master Ticket" {
+    animation {
+        ticketingWebsite
+        user
+        businessOwner
+        paymentService
+    }
+    autoLayout
+}
+
 dynamic ticketingWebsite "ViewSeatsState" "Seats state are:\n- Available\n- Soft locked\n- Locked" {
     user -> ticketingWebsite.spa "View available seats"
     ticketingWebsite.spa -> ticketingWebsite.web "HTTP request for available seats"

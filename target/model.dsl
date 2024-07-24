@@ -14,10 +14,10 @@ ticketingWebsite = softwaresystem "Cosmic Master Ticket" {
     spa -> webSocketServer "Web Socket"
 }
 
-user = person "User"{
+user = person "User" {
     description  "A user of the ticketing website"
 }
-businessOwner = person "Business Owner"{
+businessOwner = person "Business Owner" {
     description  "Concert organizers and ticketing companies."
 }
 
