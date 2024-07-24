@@ -1,0 +1,38 @@
+ifndef::imagesdir[:imagesdir: ../images]
+
+[[section-glossary]]
+== Glossary
+
+
+
+[cols="e,2e" options="header"]
+|===
+|Term |Definition
+
+|Availability
+|An indicator of the status of a seat. Possible values are available, soft locked, hard locked, and bought.
+
+|Bought
+|A seat that has been paid for by a customer. The seat is no longer available for purchase.
+
+|Concert
+|A musical performance. Tickets are sold to customers who wish to attend.
+
+|Customer
+|A person who uses the system with the intention of buying a ticket to a concert.
+
+|Hard lock
+|A pseudo-permanent reservation of a seat when a customer has decided to buy a seat. Other customers are informed of this and cannot buy the seat. If the transaction is completed, the seat is marked as bought, otherwise, it is released.
+
+|Seat
+|A place where a customer can sit during a concert. Seats are numbered and are located in a specific section which is indicated on the ticket.
+
+|Soft lock
+|A temporary reservation of a seat when a customer is interested in buying a seat. Other customers are informed of this but can still buy the seat.
+
+|Ticket
+|A voucher that indicates that a customer has paid for access to a concert, and therefore they are entitled to attend.
+
+|Transaction
+|The process where a customer buys a ticket to a concert. The transaction is completed when the customer receives the ticket, and failed if the payment is not successful.
+|===
