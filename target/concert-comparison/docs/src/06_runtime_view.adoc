@@ -7,53 +7,53 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 image::embed:ViewSeatsState[]
 
-* Description: In this scenario, the user views the state of the seats. The seats can be in one of three states: available, soft locked, or locked. The user interacts with the Single Page Application (SPA) to view the available seats. The SPA sends an HTTP request to the web server to request the available seats. The web server queries the database for the available seats and sends the response back to the SPA. The SPA then opens a web socket connection to the web socket server to request the soft locked and locked seats. The web socket server sends the available seats to the SPA, which displays the state of the seats to the user.
+In this scenario, the user views the state of the seats. The seats can be in one of three states: available, soft locked, or locked. The user interacts with the Single Page Application (SPA) to view the available seats. The SPA sends an HTTP request to the web server to request the available seats. The web server queries the database for the available seats and sends the response back to the SPA. The SPA then opens a web socket connection to the web socket server to request the soft locked and locked seats. The web socket server sends the available seats to the SPA, which displays the state of the seats to the user.
 
 
 === Select Seats
 
 image::embed:SelectSeats[]
 
-* Description: In this scenario, the user selects seats to purchase. The user interacts with the SPA to select the desired seats. The SPA sends a request to the web server to select the seats. The web server opens a web socket connection to the web socket server and sends the selected seats. The web socket server notifies the SPA of the selected seats.
+In this scenario, the user selects seats to purchase. The user interacts with the SPA to select the desired seats. The SPA sends a request to the web server to select the seats. The web server opens a web socket connection to the web socket server and sends the selected seats. The web socket server notifies the SPA of the selected seats.
 
 
 === Pay for Ticket
 
 image::embed:PayTicket[]
 
-* Description: In this scenario, the user pays for the selected seats. The user interacts with the SPA to proceed to the payment step. The SPA sends a request to the web socket server to hard lock the selected seats. The web socket server notifies all users with the selected seats. The SPA notifies the user of the seat locks and asks the user to change the selected seats. The SPA then redirects the user to the payment gateway to complete the payment. The user interacts with the payment service to pay for the ticket. The payment service sends a payment confirmation to the web server, which creates a purchase record in the database. The web server sends a payment confirmation to the web socket server to unlock the seats. The web server sends a success payment response to the SPA, which notifies the user of the successful payment.
+In this scenario, the user pays for the selected seats. The user interacts with the SPA to proceed to the payment step. The SPA sends a request to the web socket server to hard lock the selected seats. The web socket server notifies all users with the selected seats. The SPA notifies the user of the seat locks and asks the user to change the selected seats. The SPA then redirects the user to the payment gateway to complete the payment. The user interacts with the payment service to pay for the ticket. The payment service sends a payment confirmation to the web server, which creates a purchase record in the database. The web server sends a payment confirmation to the web socket server to unlock the seats. The web server sends a success payment response to the SPA, which notifies the user of the successful payment.
 
 
 === Cancel Ticket
 
 image::embed:CancelTicket[]
 
-* Description: In this scenario, the user cancels the ticket purchase. The user interacts with the SPA to proceed to the cancel ticket step. The SPA sends a request to the web server to cancel the ticket. The web server queries the database to cancel the ticket and unlock the seats. The web server notifies the user of the successful cancellation.
+In this scenario, the user cancels the ticket purchase. The user interacts with the SPA to proceed to the cancel ticket step. The SPA sends a request to the web server to cancel the ticket. The web server queries the database to cancel the ticket and unlock the seats. The web server notifies the user of the successful cancellation.
 
 
 === View Tickets
 
 image::embed:ViewTickets[]
 
-* Description: In this scenario, the user views the purchased tickets. The user interacts with the SPA to view the tickets. The SPA sends a request to the web server to view the tickets. The web server queries the database for the tickets and sends the response back to the SPA. The SPA displays the tickets to the user.
+In this scenario, the user views the purchased tickets. The user interacts with the SPA to view the tickets. The SPA sends a request to the web server to view the tickets. The web server queries the database for the tickets and sends the response back to the SPA. The SPA displays the tickets to the user.
 
 
 === Add concert
 
 image::embed:AddConcert[]
 
-* Description: In this scenario, the business owner adds a new concert to the ticketing website. The business owner interacts with the SPA to add a new concert. The SPA sends a request to the web server to add the concert. The web server queries the database to add the concert and sends the response back to the SPA. The SPA notifies the business owner of the successful addition of the concert.
+In this scenario, the business owner adds a new concert to the ticketing website. The business owner interacts with the SPA to add a new concert. The SPA sends a request to the web server to add the concert. The web server queries the database to add the concert and sends the response back to the SPA. The SPA notifies the business owner of the successful addition of the concert.
 
 
 === Cancel concert
 
 image::embed:CancelConcert[]
 
-* Description: In this scenario, the business owner cancels a concert on the ticketing website. The business owner interacts with the SPA to cancel a concert. The SPA sends a request to the web server to cancel the concert. The web server queries the database to cancel the concert and sends the response back to the SPA. The SPA notifies the business owner of the successful cancellation of the concert.
+In this scenario, the business owner cancels a concert on the ticketing website. The business owner interacts with the SPA to cancel a concert. The SPA sends a request to the web server to cancel the concert. The web server queries the database to cancel the concert and sends the response back to the SPA. The SPA notifies the business owner of the successful cancellation of the concert.
 
 
 === View concert
 
 image::embed:ViewConcerts[]
 
-* Description: In this scenario, the user views the details of a concert on the ticketing website. The user interacts with the SPA to view the concert details. The SPA sends a request to the web server to view the concert details. The web server queries the database for the concert details and sends the response back to the SPA. The SPA displays the concert details to the user.
+In this scenario, the user views the details of a concert on the ticketing website. The user interacts with the SPA to view the concert details. The SPA sends a request to the web server to view the concert details. The web server queries the database for the concert details and sends the response back to the SPA. The SPA displays the concert details to the user.
