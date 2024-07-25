@@ -10,20 +10,14 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 image::embed:SystemContext[]
 
-
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of external domain interfaces>**
+This diagram represents high level interactions with the system from the business owner and customer perspective. The concert organizers can create events and manage them through the system. The customers can view the events and manage their tickets through the system, and also the system forwards them to the external payment system to handle the purchases.
 
 === Technical Context
 
 image::embed:Containers[]
 
+This diagram represents the technical context of the system. It provides a lower level view of the system, showing which components the business owner and customer interact with in more detail.
 
+Through the Single Page Application, the business owner can create events and manage them, by consuming the Web Server and the database.
 
-**<Diagram or Table>**
-
-**<optionally: Explanation of technical interfaces>**
-
-**<Mapping Input/Output to Channels>**
+The customer can view the events and manage their tickets through the Single Page Application, which consumes the Web Server and the database, and uses the WebSocket to get real time updates on the seats availability. The customer can also make a purchase, which is handled by the Payment Service.

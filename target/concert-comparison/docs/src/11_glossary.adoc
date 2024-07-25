@@ -15,6 +15,9 @@ ifndef::imagesdir[:imagesdir: ../images]
 |Bought
 |A seat that has been paid for by a customer. The seat is no longer available for purchase.
 
+|Business owner
+|A person who uses the system with the intention of creating and managing events.
+
 |Concert
 |A musical performance. Tickets are sold to customers who wish to attend.
 
