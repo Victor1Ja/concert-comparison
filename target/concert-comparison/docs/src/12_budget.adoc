@@ -67,5 +67,5 @@ No additional miscellaneous costs are required. Azure provides all necessary ser
 | Maintenance Costs        | $0
 | Personnel Costs          | $0
 | Miscellaneous Costs      | $0
-| *Total Estimated Cost*   | *$332.4*
+| *Total Estimated Cost*   | *$870.53*
 |===
