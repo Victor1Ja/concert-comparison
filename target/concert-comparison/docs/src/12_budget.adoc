@@ -1,0 +1,69 @@
+= Budget Template for Concert Ticketing System Deployment
+
+== Deployment Overview
+
+*Data Center*: Cosmic Master Ticket SLU
+
+=== Nodes and Instances
+
+1. **React Web Node**
+    - **Node**: ticket-react***
+        - **OS**: Ubuntu 16.04 LTS
+        - **Web Server**: Nginx 1.27.0
+        - **Instance**: ticketingWebsite.spa
+        
+2. **Web Node**
+    - **Node**: ticket-web***
+        - **OS**: Ubuntu 16.04 LTS
+        - **Web Server**: Nginx 1.27.0
+        - **Instance**: ticketingWebsite.web
+
+3. **WebSocket Node**
+    - **Node**: ticket-api***
+        - **OS**: Ubuntu 16.04 LTS
+        - **Web Server**: Nginx 1.27.0
+        - **Instance**: ticketingWebsite.webSocketServer
+
+4. **Database Node**
+    - **Primary Node**: ticket-db01
+        - **OS**: Ubuntu 16.04 LTS
+        - **Database Server**: Postgres 16.3
+        - **Instance**: ticketingWebsite.database
+    - **Failover Node**: ticket-db02
+        - **OS**: Ubuntu 16.04 LTS
+        - **Database Server**: Postgres 16.3 (Failover)
+        - **Instance**: ticketingWebsite.database (Failover)
+
+== Cost Breakdown
+
+This cost are estimated on azure cloud services, and use azure cloud native services.
+
+=== Infrastructure Costs
+
+|===
+| Item                     | Description                                 | Quantity | Month Cost
+| React Web Node           | App Service B2              | 1        | $26.28
+| Web Node                 | App Service B2              | 1        | $26.28     
+| WebSocket Node           | App Service B2             | 1        | $26.28     
+| Database Node  | Azure SQL Database with Failover             | 1        | $252.00     
+|===
+
+=== Maintenance and Support Costs
+Cloud services are managed by Azure, so no additional maintenance costs are required.
+
+=== Personnel Costs
+Cloud services are managed by Azure, so no additional personnel costs are required.
+
+=== Miscellaneous Costs
+No additional miscellaneous costs are required. Azure provides all necessary services.
+
+=== Total Estimated Cost
+
+|===
+| Category                 | Total Cost
+| Infrastructure Costs     | $332.4
+| Maintenance Costs        | $0
+| Personnel Costs          | $0
+| Miscellaneous Costs      | $0
+| *Total Estimated Cost*   | *$332.4*
+|===

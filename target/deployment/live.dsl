@@ -5,13 +5,13 @@ liveUserComputer = deploymentNode "User's computer" "" "Microsoft Windows or App
 }
 
 liveDc = deploymentNode "Cosmic Master Ticket SLU" "" "Cosmic Master Ticket SLU data center" {
-    liveWebNode = deploymentNode "ticket-web***" "" "Ubuntu 16.04 LTS" "" 4 {
+    liveWebNode = deploymentNode "ticket-web***" "" "Ubuntu 16.04 LTS" {
         liveWebServer = deploymentNode "Nginx" "" "Nginx 1.27.0" {
             liveWebApplicationInstance = containerInstance ticketingWebsite.web
         }
     }
     
-    liveWebSocketNode = deploymentNode "ticket-api***" "" "Ubuntu 16.04 LTS" "" 8 {
+    liveWebSocketNode = deploymentNode "ticket-api***" "" "Ubuntu 16.04 LTS" {
         liveWebServer = deploymentNode "Nginx" "" "Nginx 1.27.0" {
             liveWebSocketApplicationInstance = containerInstance ticketingWebsite.webSocketServer
         }
