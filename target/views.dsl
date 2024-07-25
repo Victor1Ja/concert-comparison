@@ -1,3 +1,72 @@
+systemcontext ticketingWebsite "SystemContext" {
+    include *
+    animation {
+        ticketingWebsite
+        user
+        businessOwner
+        paymentService
+    }
+    autoLayout
+    description "The system context diagram for the Cosmic Master Ticket system."
+    properties {
+        structurizr.groups false
+    }
+}
+
+container ticketingWebsite "Containers" {
+    include *
+    animation {
+        ticketingWebsite.spa
+        ticketingWebsite.web
+        ticketingWebsite.webSocketServer
+        ticketingWebsite.database
+        user
+        businessOwner
+        paymentService
+    }
+    autoLayout
+    description "The container diagram for the Internet Banking System."
+}
+
+component ticketingWebsite.web "Components" {
+    include *
+    animation {
+        // ticketingWebsite.spa
+        // ticketingWebsite.web
+        // ticketingWebsite.webSocketServer
+        // ticketingWebsite.database
+        ticketingWebsite.web.securityComponent
+        ticketingWebsite.web.seatsController
+        ticketingWebsite.web.paymentController
+    }
+    autoLayout
+    description "The component diagram for the API Application."
+}
+
+deployment ticketingWebsite "Development" "DevelopmentDeployment" {
+    include *
+    animation {
+        devEnv.devLaptop.devBrowser.developerSinglePageApplicationInstance
+        devEnv.devLaptop.devDocker.devNginx.developerWebApplicationInstance devEnv.devLaptop.devDocker.devNginx.developerWebSocketApplicationInstance
+        devEnv.devLaptop.devDbDocker.devDbServer.developerDatabaseInstance
+    }
+    autoLayout
+    description "An example development deployment scenario for the Cosmic Master Ticket system."
+}
+
+deployment ticketingWebsite "Live" "LiveDeployment" {
+    include *
+    animation {
+        liveEnv.liveUserComputer.liveWebBrowser.liveSinglePageApplicationInstance
+        liveEnv.liveDc.liveWebNode.liveWebServer.liveWebApplicationInstance
+        liveEnv.liveDc.liveWebSocketNode.liveWebServer.liveWebSocketApplicationInstance
+        liveEnv.liveDc.liveDbNode.primaryDatabaseServer.livePrimaryDatabaseInstance
+        liveEnv.liveDc.liveFailover.secondaryDatabaseServer.liveSecondaryDatabaseInstance
+    }
+    autoLayout
+    description "An example live deployment scenario for the Cosmic Master Ticket system."
+}
+
 dynamic ticketingWebsite "ViewSeatsState" "Seats state are:\n- Available\n- Soft locked\n- Locked" {
     user -> ticketingWebsite.spa "View available seats"
     ticketingWebsite.spa -> ticketingWebsite.web "HTTP request for available seats"
@@ -11,10 +80,10 @@ dynamic ticketingWebsite "ViewSeatsState" "Seats state are:\n- Available\n- Soft
     autoLayout
 }
 
-dynamic ticketingWebsite "SelectSeats" "" {
+dynamic ticketingWebsite "SelectSeats" "Allow user to select seats" {
     user -> ticketingWebsite.spa "Select the seat(s)"
-    ticketingWebsite.spa -> ticketingWebsite.webSocketServer "Open WebSocket connection"
     ticketingWebsite.spa -> ticketingWebsite.web "Request to select seats"
+    ticketingWebsite.web -> ticketingWebsite.webSocketServer "Open WebSocket connection"
     ticketingWebsite.web -> ticketingWebsite.webSocketServer "Send selected seats"
     // ticketingWebsite.webSocketServer -> ticketingWebsite.spa "Notify other users about seat selection"
     // ticketingWebsite.spa -> user "Confirm seat soft lock"
@@ -22,7 +91,7 @@ dynamic ticketingWebsite "SelectSeats" "" {
     autoLayout
 }
 
-dynamic ticketingWebsite "PayTicket" "" {
+dynamic ticketingWebsite "PayTicket" "User pays for the ticket" {
     user -> ticketingWebsite.spa "Go to payment step"
     ticketingWebsite.spa -> ticketingWebsite.webSocketServer "Hard lock selected seats"
     ticketingWebsite.webSocketServer -> ticketingWebsite.spa "Notify all users with those selected seats"

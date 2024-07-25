@@ -1,24 +1,18 @@
-devLaptop = deploymentNode "Developer Laptop" "" "Microsoft Windows 10 or Apple macOS" {
+devLaptop = deploymentNode "Developer Laptop" "" "Microsoft Windows 10 or Apple macOS or Linux" {
     devBrowser = deploymentNode "Web" "" "Chrome, Firefox, Safari, or Edge" {
-        developerSinglePageApplicationInstance = containerInstance internetBankingSystem.spa
+        developerSinglePageApplicationInstance = containerInstance ticketingWebsite.spa
     }
     
     devDocker = deploymentNode "Docker Container - Web Server" "" "Docker" {
-        devTomcat = deploymentNode "Apache Tomcat" "" "Apache Tomcat 8.x" {
-            developerWebApplicationInstance = containerInstance internetBankingSystem.web
-            developerApiApplicationInstance = containerInstance internetBankingSystem.api
+        devNginx = deploymentNode "Nginx" "" "Nginx 1.27.0" {
+            developerWebApplicationInstance = containerInstance ticketingWebsite.web
+            developerWebSocketApplicationInstance = containerInstance ticketingWebsite.webSocketServer
         }
     }
     
     devDbDocker = deploymentNode "Docker Container - Database Server" "" "Docker" {
-        devDbServer = deploymentNode "Database Server" "" "Oracle 12c" {
-            developerDatabaseInstance = containerInstance internetBankingSystem.database
+        devDbServer = deploymentNode "Database Server" "" "Postgres 16.3" {
+            developerDatabaseInstance = containerInstance ticketingWebsite.database
         }
-    }
-}
-
-deploymentNode "Big Bank plc" "" "Big Bank plc data center" "" {
-    deploymentNode "bigbank-dev001" "" "" "" {
-        softwareSystemInstance mainframe
     }
 }
