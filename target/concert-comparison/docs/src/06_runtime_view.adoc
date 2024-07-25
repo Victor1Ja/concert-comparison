@@ -54,6 +54,6 @@ image::embed:CancelConcert[]
 
 === View concert
 
-image::embed:ViewConcert[]
+image::embed:ViewConcerts[]
 
 * Description: In this scenario, the user views the details of a concert on the ticketing website. The user interacts with the SPA to view the concert details. The SPA sends a request to the web server to view the concert details. The web server queries the database for the concert details and sends the response back to the SPA. The SPA displays the concert details to the user.
