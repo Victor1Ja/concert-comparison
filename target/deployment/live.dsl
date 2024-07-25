@@ -11,7 +11,7 @@ liveDc = deploymentNode "Cosmic Master Ticket SLU" "" "Cosmic Master Ticket SLU 
         }
     }
     
-    liveWebSocketNode = deploymentNode "ticket-api***" "" "Ubuntu 16.04 LTS" {
+    liveWebSocketNode = deploymentNode "ticket-api***" "" "Ubuntu 16.04 LTS" 2 {
         liveWebServer = deploymentNode "Nginx" "" "Nginx 1.27.0" {
             liveWebSocketApplicationInstance = containerInstance ticketingWebsite.webSocketServer
         }

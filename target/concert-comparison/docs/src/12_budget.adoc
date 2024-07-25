@@ -42,10 +42,12 @@ This cost are estimated on azure cloud services, and use azure cloud native serv
 
 |===
 | Item                     | Description                                 | Quantity | Month Cost
-| React Web Node           | App Service B2              | 1        | $26.28
-| Web Node                 | App Service B2              | 1        | $26.28     
-| WebSocket Node           | App Service B2             | 1        | $26.28     
-| Database Node  | Azure SQL Database with Failover             | 1        | $252.00     
+| React Web Node           | App Service B3              | 1        | $51.83
+| Web Node                 | App Service B3              | 4        | $207.32
+| WebSocket Node           | App Service S3             | 1        | $277.40
+| Database Node  | Azure SQL Database with Failover             | 1        | $252.00    
+| SSL Certificate          | Azure SSL Certificate       | 1        | $69.99
+| Domain Name              | Azure Domain Name           | 1        | $11.99
 |===
 
 === Maintenance and Support Costs
@@ -61,7 +63,7 @@ No additional miscellaneous costs are required. Azure provides all necessary ser
 
 |===
 | Category                 | Total Cost
-| Infrastructure Costs     | $332.4
+| Infrastructure Costs     | $870.53
 | Maintenance Costs        | $0
 | Personnel Costs          | $0
 | Miscellaneous Costs      | $0
